@@ -1,0 +1,188 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+  <h1 class="posttitle loader">{{ordenprog.fecha_programa}}</h1>
+
+
+
+<table class='table' id='table'>
+
+  <tr bgcolor="#dddddd">
+    <td>
+    </th>
+    {% for maquina in maquinas %}
+    <td>
+    <h3>{{maquina}}</h3>
+    </th>
+    {% endfor %}
+
+
+</tr>
+
+
+  <tr>
+    <td colspan="7" class="centerText">
+    <h5>{{ordenprog.horizonteini}}</h5>
+    </th>
+
+  </tr>
+
+
+  <tr>
+  </tr>
+
+{% for turno in turnos%}
+
+  <tr>
+
+
+    <td>
+    <h4>{{turno.turno}}</h4>
+    </th>
+
+
+
+
+  {% for maquina in maquinas %}
+
+    <td>
+      <!--FFG-->
+
+
+    {% for detalle in detalleprog %}
+
+          <dl>
+
+          {% if detalle.programma == ordenprog %}
+          {% if detalle.datefinajustada == ordenprog.horizonteini %}
+            {% if detalle.workcenter == maquina.maquina %}
+            {% if detalle.turno == turno.turno %}
+
+
+
+
+              <a href="http://interlink.corrupac.cl/pagegenerator.dll/OrderStatusSearch?%21+SplitN+=isNULL%28O.SplitNumber%2C0%29%3D0&O.OrderID+like={{detalle.orderId}}&C.Name+like=%25&CustPO+like=&CustItemID+like=&O.specid+like=&isNull%28ActGrade%2COrgGrade%29+like=&G.flute+like=&SecondaryCustomerPO+like=&shipzone+like=&O.SalesCode+like=&duedatetime+%3E%3D=&duedatetime+%3C%3D=&LateProductionDateTime+%3E%3D=&LateProductionDateTime+%3C%3D=&BlankWidth+%3E%3D=&BlankWidth+%3C%3D=&BlankLength+%3E%3D=&BlankLength+%3C%3D=&OrderPriority=&%21+Status=O.TrackingStatus%3C%3D80&%21+Warehouse=&%21+Held=&order+by=O.trackingstatus+asc&%21+group=+">{{ detalle.orderId }}</a>
+
+
+              {% for prod in progreal%}
+              {% if prod.orderId == detalle.orderId %}
+              {% if prod.datefinajustada == detalle.datefinajustada %}
+              {% if prod.datefinajustada == detalle.datefinajustada %}
+
+
+              <li><a href="#">R {{ prod.qProd }} </a></li>
+              <li><a href="#">C {{ detalle.completo_unidades}} </a></li>
+              <li><a href="#">Encontrado</a></li>
+
+              {% endif %}
+              {% endif %}
+              {% endif %}
+
+              {% endfor %}
+              {% endif %}
+
+
+              <!--<a href="#"> {{ detalle.datefinajustada }} </a>-->
+            </li>
+            {% endif %}
+          {% endif %}
+          {% endif %}
+        </dl>
+
+      {% endfor %}
+
+
+      </th>
+      {% endfor %}
+
+
+
+
+    {% endfor %}
+  </tr>
+
+
+  <tr>
+    <td colspan="7">
+    <h5 >{{ordenprog.horizontefin}}</h5>
+    </th>
+
+  </tr>
+
+
+  <tr>
+  </tr>
+
+{% for turno in turnos%}
+
+  <tr>
+
+
+    <td>
+    <h4>{{turno.turno}}</h4>
+    </th>
+
+
+
+
+  {% for maquina in maquinas %}
+
+    <td>
+
+
+
+    {% for detalle in detalleprog %}
+
+          <dl>
+
+          {% if detalle.programma == ordenprog %}
+          {% if detalle.datefinajustada == ordenprog.horizontefin %}
+            {% if detalle.workcenter == maquina.maquina %}
+            {% if detalle.turno == turno.turno %}
+
+
+
+
+              <a href="http://interlink.corrupac.cl/pagegenerator.dll/OrderStatusSearch?%21+SplitN+=isNULL%28O.SplitNumber%2C0%29%3D0&O.OrderID+like={{detalle.orderId}}&C.Name+like=%25&CustPO+like=&CustItemID+like=&O.specid+like=&isNull%28ActGrade%2COrgGrade%29+like=&G.flute+like=&SecondaryCustomerPO+like=&shipzone+like=&O.SalesCode+like=&duedatetime+%3E%3D=&duedatetime+%3C%3D=&LateProductionDateTime+%3E%3D=&LateProductionDateTime+%3C%3D=&BlankWidth+%3E%3D=&BlankWidth+%3C%3D=&BlankLength+%3E%3D=&BlankLength+%3C%3D=&OrderPriority=&%21+Status=O.TrackingStatus%3C%3D80&%21+Warehouse=&%21+Held=&order+by=O.trackingstatus+asc&%21+group=+">{{ detalle.orderId }}</a>
+
+
+              {% for prod in progreal%}
+              {% if prod.orderId == detalle.orderId %}
+              {% if prod.datefinajustada == detalle.datefinajustada %}
+              {% if prod.datefinajustada == detalle.datefinajustada %}
+
+
+              <li><a href="#">R {{ prod.qProd }} </a></li>
+              <li><a href="#">C {{ detalle.completo_unidades}} </a></li>
+              <li><a href="#">Encontrado</a></li>
+
+              {% endif %}
+              {% endif %}
+              {% endif %}
+
+              {% endfor %}
+              {% endif %}
+
+
+              <!--<a href="#"> {{ detalle.datefinajustada }} </a>-->
+            </li>
+            {% endif %}
+          {% endif %}
+          {% endif %}
+        </dl>
+
+      {% endfor %}
+
+
+      </th>
+      {% endfor %}
+
+
+
+
+    {% endfor %}
+  </tr>
+
+
+
+{% endblock %}
